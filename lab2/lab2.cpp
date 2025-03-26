@@ -1,43 +1,38 @@
 ﻿#include "point.h"
-#include <cmath>
 #include <iostream>
 using namespace std;
 
-int main()
-{
+int main() {
     double x, y;
-    cout << "Type the triangle: "<<endl;
-        Triangle t = { { 0, 0}, { 0, 0 }, { 0, 0 } };
-    cout << "Type A coordinates: ";
-    cin >> x >> y;
-    t.A.x = x;
-    t.A.y = y;
-    cout << "\nType B coordinates: ";
-    cin >> x >> y;
-    t.B.x = x;
-    t.B.y = y;
-    cout << "\nType C coordinates: ";
-    cin >> x >> y;
-    t.C.x = x;
-    t.C.y = y;
-    if (t.area(t) == 0) {
-        cout << "Trikutnik virojenyy\n";
-        return 0;
-    }
-    cout << "\nType the number of points: ";
-    int n = 0;
-    cin >> n;
-    for (int i = 0; i < n; i++) {
-        double x, y;
-        
-        cout << "Type point coordinates " << i + 1 << ": ";
-        cin >> x;
-        cin >> y;
-        Point p = { x,y };
+    cout << "Type the triangle: " << endl;
 
+    Triangle t;
+
+    cout << "Type A coordinates: ";
+    cin >> t.A.x >> t.A.y;
+
+    cout << "Type B coordinates: ";
+    cin >> t.B.x >> t.B.y;
+
+    cout << "Type C coordinates: ";
+    cin >> t.C.x >> t.C.y;
+
+    if (t.area() == 0) {
+        cout << "Trikutnik virojenyy\n";
+    }
+
+    cout << "\nType the number of points: ";
+    int n;
+    cin >> n;
+
+    for (int i = 0; i < n; i++) {
+        cout << "Type point coordinates " << i + 1 << ": ";
+        cin >> x >> y;
+        Point p = { x, y };
 
         if (t.contains(p)) {
             cout << "Tochka (" << p.x << ", " << p.y << ") nalejyt.\n";
+            nameji(t, p);
         }
         else {
             cout << "Tochka (" << p.x << ", " << p.y << ") ne nalejyt.\n";
@@ -46,5 +41,3 @@ int main()
 
     return 0;
 }
-   
-
